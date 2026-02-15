@@ -1,0 +1,30 @@
+QR Password Fill — Securely transfer passwords from your air-gapped device
+
+🔐 WHY USE THIS?
+Keep your passwords on an offline device (phone, tablet, or dedicated hardware) and transfer them to your browser via QR code. No network connection, no cloud sync, no risk of remote theft.
+
+✨ FEATURES
+• Scan QR codes containing passwords using your webcam
+• View password masked (••••••) or revealed
+• One-click copy to clipboard
+• Paste into any login form
+• Works with KeePass, Bitwarden, and any app that generates QR codes
+• No data collection — everything stays local
+
+📱 HOW IT WORKS
+1. On your air-gapped device, generate a QR code with your password
+2. Click the extension icon and select "Scan QR Code"
+3. Point your webcam at the QR code
+4. Click copy, then paste into the login form
+
+🔒 PRIVACY & SECURITY
+• No data is ever sent to any server
+• No analytics, no tracking
+• Passwords are only held in memory while the scanner tab is open
+• Open source — inspect the code yourself
+
+Perfect for security-conscious users who store passwords offline and need a quick way to enter them without typing.
+
+---
+
+Keywords: password manager, QR code, air-gapped, offline password, KeePass, secure login, password fill, QR scanner
