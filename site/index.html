@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Password Extension — Air-Gapped Password Entry</title>
+<meta name="description" content="Fill passwords by scanning QR codes. 100% offline, no accounts, no cloud. Air-gapped security for your credentials.">
+<style>
+:root {
+  --bg: #0f172a;
+  --bg2: #1e293b;
+  --fg: #e2e8f0;
+  --fg2: #94a3b8;
+  --accent: #38bdf8;
+  --accent2: #22d3ee;
+  --green: #34d399;
+  --border: #334155;
+  --radius: 12px;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f8fafc;
+    --bg2: #ffffff;
+    --fg: #1e293b;
+    --fg2: #64748b;
+    --accent: #0284c7;
+    --accent2: #0891b2;
+    --green: #059669;
+    --border: #e2e8f0;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+/* Hero */
+.hero { text-align: center; padding: 80px 24px 60px; }
+.hero-emoji { font-size: 64px; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+.hero h1 span { background: linear-gradient(135deg, var(--accent), var(--green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero p { font-size: 1.25rem; color: var(--fg2); max-width: 600px; margin: 0 auto 32px; }
+.cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 28px; border-radius: var(--radius); font-weight: 600; font-size: 1rem; transition: transform 0.15s, box-shadow 0.15s; }
+.btn:hover { transform: translateY(-2px); text-decoration: none; }
+.btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #fff; }
+.btn-secondary { background: var(--bg2); color: var(--fg); border: 1px solid var(--border); }
+
+/* Steps */
+.steps { padding: 60px 24px; }
+.steps h2 { text-align: center; font-size: 1.75rem; margin-bottom: 48px; }
+.steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
+.step { text-align: center; padding: 32px 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); }
+.step-icon { font-size: 48px; margin-bottom: 16px; }
+.step-num { display: inline-block; background: var(--accent); color: #fff; width: 28px; height: 28px; border-radius: 50%; font-size: 0.85rem; font-weight: 700; line-height: 28px; margin-bottom: 12px; }
+.step h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.step p { color: var(--fg2); font-size: 0.95rem; }
+
+/* Features */
+.features { padding: 60px 24px; }
+.features h2 { text-align: center; font-size: 1.75rem; margin-bottom: 48px; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.feature { padding: 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); }
+.feature-icon { font-size: 32px; margin-bottom: 12px; }
+.feature h3 { font-size: 1rem; margin-bottom: 6px; }
+.feature p { color: var(--fg2); font-size: 0.9rem; }
+
+/* Privacy */
+.privacy { padding: 60px 24px; text-align: center; }
+.privacy-box { background: var(--bg2); border: 2px solid var(--green); border-radius: var(--radius); padding: 48px 32px; max-width: 700px; margin: 0 auto; }
+.privacy-box h2 { font-size: 1.75rem; margin-bottom: 16px; }
+.privacy-box p { color: var(--fg2); font-size: 1.05rem; margin-bottom: 8px; }
+.privacy-list { list-style: none; display: inline-block; text-align: left; margin-top: 20px; }
+.privacy-list li { padding: 6px 0; font-size: 1rem; }
+.privacy-list li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+
+/* Footer */
+footer { padding: 48px 24px; text-align: center; color: var(--fg2); font-size: 0.9rem; border-top: 1px solid var(--border); margin-top: 40px; }
+footer .links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-emoji">🔐</div>
+  <h1>Passwords that <span>never touch the network</span></h1>
+  <p>A browser extension that fills login credentials by scanning QR codes from your password manager. 100% offline. Zero data collection. Air-gapped security.</p>
+  <div class="cta-group">
+    <a href="https://github.com/lifehackjohn/qr-password-extension/releases" class="btn btn-primary">⬇ Download Extension</a>
+    <a href="https://github.com/lifehackjohn/qr-password-extension" class="btn btn-secondary">📂 View Source</a>
+  </div>
+</section>
+
+<section class="steps">
+  <div class="container">
+    <h2>How It Works</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-icon">📱</div>
+        <div class="step-num">1</div>
+        <h3>Display the QR Code</h3>
+        <p>Open your password manager and show the QR code for the credential you need. Works with any manager that supports QR export.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">📷</div>
+        <div class="step-num">2</div>
+        <h3>Scan with the Extension</h3>
+        <p>Click the extension icon in your browser. It activates your webcam, reads the QR code, and immediately stops the camera.</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">✅</div>
+        <div class="step-num">3</div>
+        <h3>Password Filled</h3>
+        <p>Your username and password are instantly filled into the login form. Nothing is stored. Nothing is sent anywhere. Done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2>Why QR Password Extension?</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">🔒</div>
+        <h3>Air-Gapped Security</h3>
+        <p>Your credentials travel through light, not the internet. The QR code goes from your phone screen to your webcam — never touching a server.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📡</div>
+        <h3>100% Offline</h3>
+        <p>No accounts to create. No cloud sync. No servers. The extension works entirely in your browser with zero network requests.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🕵️</div>
+        <h3>Zero Tracking</h3>
+        <p>No analytics. No telemetry. No data collection of any kind. We don't even have a server to send data to.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔓</div>
+        <h3>Open Source (MIT)</h3>
+        <p>Every line of code is public. Audit it, fork it, improve it. Full transparency — the way security software should be.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🔗</div>
+        <h3>Works With Any Password Manager</h3>
+        <p>KeePassXC, Bitwarden, 1Password — if it can display a QR code with credentials, this extension can read it.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🛠️</div>
+        <h3>Bonus: Offline QR Generator</h3>
+        <p>Includes a standalone HTML page to generate QR codes from credentials. Works completely offline — just open the file in any browser.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="privacy">
+  <div class="container">
+    <div class="privacy-box">
+      <h2>🛡️ Our Privacy Promise</h2>
+      <p>This extension was built with one principle: your credentials are <strong>yours alone</strong>.</p>
+      <ul class="privacy-list">
+        <li>No data ever leaves your browser</li>
+        <li>Camera activates only when you click — stops immediately after scan</li>
+        <li>No persistent storage of credentials</li>
+        <li>No analytics, cookies, or tracking of any kind</li>
+        <li>No external scripts, CDNs, or third-party code</li>
+        <li>Fully auditable open-source codebase</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="links">
+      <a href="https://github.com/lifehackjohn/qr-password-extension">GitHub</a>
+      <a href="https://github.com/lifehackjohn/qr-password-extension/blob/main/LICENSE">MIT License</a>
+      <a href="https://github.com/lifehackjohn/qr-password-extension/blob/main/CONTRIBUTING.md">Contributing</a>
+      <a href="https://github.com/lifehackjohn/qr-password-extension/blob/main/SECURITY.md">Security Policy</a>
+    </div>
+    <p>Built with 🔒 by <a href="https://github.com/lifehackjohn">lifehackjohn</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
