@@ -1,6 +1,6 @@
 # QR Password Fill
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-red.svg)](LICENSE)
 
 A Chrome extension that enables secure password autofill by scanning QR codes from an air-gapped device. Your credentials never touch the network — they're transmitted optically via your webcam.
 
@@ -73,4 +73,4 @@ If you discover a security vulnerability, please see [SECURITY.md](SECURITY.md) 
 
 ## License
 
-This project is licensed under the MIT License — see [LICENSE](LICENSE) for details.
+This project is licensed under the GNU Affero General Public License v3.0 (AGPL-3.0) — see [LICENSE](LICENSE) for details.
